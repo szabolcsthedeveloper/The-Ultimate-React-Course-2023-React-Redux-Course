@@ -142,3 +142,177 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+const books = getBooks();
+
+/*
+
+// Desctructuring
+
+const book = getBook(3);
+
+// const title = book.title;
+// const author = book.author;
+
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+  book;
+
+console.log(author, title, genres);
+
+// const primaryGenre = genres[0];
+// const secondaryGenre = genres[1];
+
+// Spread operator
+
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
+
+console.log(primaryGenre, secondaryGenre, otherGenres);
+
+const newGenres = [...genres, "epic fantaasy"];
+
+const updatedBook = {
+  ...book,
+
+  // Adding a new property
+  moviePublicationDate: "2001-12-19",
+
+  // Overwriting an existing property
+  pages: 1210,
+};
+updatedBook;
+
+const summary = `${title}'s book ${
+  hasMovieAdaptation ? "" : "not"
+} been adapted as a movie`;
+summary;
+
+const lenghtCheck = pages > 1000 ? "over a thousand" : "less than one thousand";
+lenghtCheck;
+
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+const getYear = (str) => {
+  return str.split("-")[0];
+};
+
+console.log(getYear(publicationDate));
+
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+// falsy: 0, '', null, undefined
+console.log("szabolcs" && "Some string");
+console.log(0 && "Some string");
+console.log("0" && "Some string");
+
+console.log(true || "Some string");
+console.log(false || "Some string");
+
+console.log(book.translations.spanish);
+
+// const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+// spanishTranslation;
+
+// console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount || "NO DATA";
+// countWrong;
+
+// const count = book.reviews.librarything.reviewsCount ?? "NO DATA";
+// count;
+
+
+function getTotalReviewCount(book) {
+  const goodread = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodread + librarything;
+}
+// console.log(getTotalReviewCount(book));
+
+const books = getBooks();
+// books;
+
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+
+// const titles = books.map((book) => book.title);
+// console.log(titles);
+
+// const authors = books.map((book) => book.author);
+// console.log(authors);
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  pages: book.pages,
+  reviewsCount: getTotalReviewCount(book),
+}));
+
+// essentialData;
+
+const longBooks = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.genres.includes("fantasy", "litriture"))
+  .filter((book) => book.hasMovieAdaptation);
+longBooks;
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((books) => books.title);
+
+adventureBooks;
+
+const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
+pagesAllBooks;
+
+const x = [3, 7, 1, 9, 6];
+const sorted = x.slice().sort((a, b) => a - b);
+
+x;
+sorted;
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
+
+
+// 1) Add a book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and Chamber of Secrets",
+  author: "J.K Rowling",
+};
+
+const booksAfterAdd = [...books, newBook];
+// booksAfterAdd;
+
+// 2) Delete a book object from array
+const booksAfterDelete = books.filter((book) => book.id !== 3);
+// booksAfterDelete;
+
+// 3) Update a book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1 } : book
+);
+booksAfterUpdate;
+
+*/
+
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+// console.log("szabolcs");
+
+async function getTodos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+
+const todos = getTodos();
+console.log(todos);
+
+console.log("szabolcs");
